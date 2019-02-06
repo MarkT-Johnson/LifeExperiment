@@ -9,10 +9,6 @@ public class Creature {
 	 */
 	private int age;
 	/**
-	 * Determines how hungry the creature is
-	 */
-	private int hunger;
-	/**
 	 * Keeps a count of the number of creatures
 	 */
 	private static int number = 0;
@@ -25,6 +21,8 @@ public class Creature {
 	 */
 	private String name;
 	
+	private int strength;
+	
 	//=========================================================================
 	
 	/**
@@ -34,10 +32,10 @@ public class Creature {
 	public Creature(String name) {
 		alive = true;
 		age = 0;
-		hunger = 100;
 		this.name = name;
 		number++;
 		creatureNumber = number;
+		strength = 
 	}
 	/**
 	 * Creates a creature where the name of the creature is creatureNumber
@@ -45,7 +43,6 @@ public class Creature {
 	public Creature() {
 		alive = true;
 		age = 0;
-		hunger = 100;
 		number++;
 		creatureNumber = number;
 		name = String.valueOf(creatureNumber);
@@ -54,32 +51,11 @@ public class Creature {
 	//=========================================================================
 	
 	/**
-	 * Changes the amount of hunger the creature has left and sets alive
-	 * to false if the creature hits zero hunger
-	 * @param value The amount to change the hunger by
-	 */
-	public void hunger(int value) {
-		hunger = hunger + value;
-		if(hunger <= 0) {
-			alive = false;
-		}
-	}
-	
-	/**
-	 * Reduces the creature's hunger by one
-	 */
-	public void hunger() {
-		hunger--;
-		if(hunger <= 0) {
-			alive = false;
-		}
-	}
-	
-	/**
 	 * Ages the creature by one
 	 */
 	public void age() {
 		age++;
+		
 	}
 	
 	//=========================================================================
@@ -98,14 +74,6 @@ public class Creature {
 
 	public void setAge(int age) {
 		this.age = age;
-	}
-
-	public int getHunger() {
-		return hunger;
-	}
-
-	public void setHunger(int hunger) {
-		this.hunger = hunger;
 	}
 
 	public static int getNumber() {
