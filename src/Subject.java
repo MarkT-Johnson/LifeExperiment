@@ -14,8 +14,8 @@ public class Subject extends Creature{
 		this.setAlive(true);
 		this.setAge(0);
 		this.setName(name);
-		Creature.setNumber(Creature.getNumber() + 1);
 		this.setCreatureNumber(Creature.getNumber());
+		Creature.setNumber(Creature.getNumber() + 1);
 	}
 	
 	//=========================================================================
@@ -31,6 +31,8 @@ public class Subject extends Creature{
 		return Math.random();
 	}
 	
+	//-------------------------------------------------------------------------
+	
 	/**
 	 * Allows the creature to gather food to increase hunger with a random chance
 	 * for how much it increases by, cannot exceed 100 hunger.
@@ -38,7 +40,14 @@ public class Subject extends Creature{
 	public void gatherFood() {
 		hunger();
 		
+		hunger((int)Math.random() * 5);
+		
+		if(hunger > 100) {
+			hunger = 100;
+		}
 	}
+	
+	//-------------------------------------------------------------------------
 	
 	/**
 	 * Changes the amount of hunger the subject has left and sets alive
@@ -51,6 +60,8 @@ public class Subject extends Creature{
 			this.setAlive(false);
 		}
 	}
+	
+	//-------------------------------------------------------------------------
 	
 	/**
 	 * Reduces the subject's hunger by one
@@ -67,7 +78,7 @@ public class Subject extends Creature{
 	public void setHunger(int hunger) {
 		this.hunger = hunger;
 	}
-	
+	//----------------------------------------//
 	public int getHunger() {
 		return hunger;
 	}

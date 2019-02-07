@@ -33,9 +33,9 @@ public class Creature {
 		alive = true;
 		age = 0;
 		this.name = name;
-		number++;
 		creatureNumber = number;
-		strength = 
+		number++;
+		strength = (int)(Math.random() * 6);
 	}
 	/**
 	 * Creates a creature where the name of the creature is creatureNumber
@@ -43,9 +43,10 @@ public class Creature {
 	public Creature() {
 		alive = true;
 		age = 0;
-		number++;
 		creatureNumber = number;
+		number++;
 		name = String.valueOf(creatureNumber);
+		strength = (int)(Math.random() * 6);
 	}
 	
 	//=========================================================================
@@ -54,8 +55,8 @@ public class Creature {
 	 * Ages the creature by one
 	 */
 	public void age() {
-		age++;
 		
+		age++;
 	}
 	
 	//=========================================================================
@@ -63,27 +64,27 @@ public class Creature {
 	public boolean isAlive() {
 		return alive;
 	}
-
+	
 	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
-
+	//----------------------------------------//
 	public int getAge() {
 		return age;
 	}
-
+	
 	public void setAge(int age) {
 		this.age = age;
 	}
-
+	//----------------------------------------//
 	public static int getNumber() {
 		return number;
 	}
-
+	
 	public static void setNumber(int number) {
 		Creature.number = number;
 	}
-
+	//----------------------------------------//
 	public int getCreatureNumber() {
 		return creatureNumber;
 	}
@@ -91,13 +92,21 @@ public class Creature {
 	public void setCreatureNumber(int creatureNumber) {
 		this.creatureNumber = creatureNumber;
 	}
-
+	//----------------------------------------//
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	//----------------------------------------//
+	public int getStrength() {
+		return strength;
+	}
+	
+	public void setStrength(int strength) {
+		this.strength = strength;
 	}
 	
 }
