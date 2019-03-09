@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Creature {
 	/**
@@ -44,6 +45,9 @@ public class Creature {
 				strength++;
 			}
 			age++;
+			if(age > 100) {
+				setAlive(false);
+			}
 		}
 	}
 
@@ -71,6 +75,10 @@ public class Creature {
 
 	public static void setNumber(int number) {
 		Creature.number = number;
+	}
+	
+	public static void updateNumber(ArrayList<Creature> pop) {
+		
 	}
 	//----------------------------------------//
 	public int getCreatureNumber() {

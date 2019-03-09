@@ -5,6 +5,12 @@ public class Subject extends Creature{
 	 * Determines how hungry the subject is
 	 */
 	private int hunger;
+	
+	/**
+	 * The number of creatures the subject has killed
+	 */
+	private int kills;
+	
 	/**
 	 * The name of the creature
 	 */
@@ -22,6 +28,7 @@ public class Subject extends Creature{
 		this.setCreatureNumber(Creature.getNumber());
 		this.setStrength((int)(Math.random() * 6));
 		Creature.setNumber(Creature.getNumber() + 1);
+		this.setKills(0);
 	}
 
 	//=========================================================================
@@ -61,6 +68,12 @@ public class Subject extends Creature{
 		}
 		
 		hunger(food);
+		
+		//Determines whether or not the subject has starved to death
+		if(hunger <= 0) {
+			this.setAlive(false);
+			System.out.println(name + " has starved to death!!!!");
+		}
 	}
 
 	//-------------------------------------------------------------------------
@@ -72,16 +85,12 @@ public class Subject extends Creature{
 	 */
 	public void hunger(int value) {
 		hunger += value;
-		if(hunger <= 0) {
-			this.setAlive(false);
-			System.out.println(name + " has starved to death!!!!");
-		}
 	}
 
 	//-------------------------------------------------------------------------
 
 	/**
-	 * Reduces the subject's hunger by one
+	 * Reduces the subject's hunger by one and checks for starvation
 	 */
 	public void hunger() {
 		hunger--;
@@ -89,21 +98,49 @@ public class Subject extends Creature{
 			this.setAlive(false);
 		}
 	}
+	
+	//-------------------------------------------------------------------------
+	
+	/**
+	 * Adds one to the number of kills the subject has made
+	 */
+	public void kills() {
+		kills++;
+	}
+	
+	//-------------------------------------------------------------------------
+	
+	/**
+	 * Adds a number to the total kill count
+	 * @param kills The number to be added to total kills
+	 */
+	public void kills(int kills) {
+		this.kills += kills;
+	}
 
 	//=========================================================================
 
 	public void setHunger(int hunger) {
 		this.hunger = hunger;
 	}
-	//----------------------------------------//
+	
 	public int getHunger() {
 		return hunger;
-	}//----------------------------------------//
+	}
+	//----------------------------------------//
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	//----------------------------------------//
+	public void setKills(int kills) {
+		this.kills = kills;
+	}
+	
+	public int getKills() {
+		return kills;
 	}
 }
