@@ -17,54 +17,42 @@ public class Creature {
 	 */
 	private int creatureNumber;
 	/**
-	 * The name of the creature
+	 * Strength of a creature for combat
 	 */
-	private String name;
-	
 	private int strength;
-	
+
 	//=========================================================================
-	
 	/**
-	 * Constructs A creature with a specific name
-	 * @param name The name of the creature
-	 */
-	public Creature(String name) {
-		alive = true;
-		age = 0;
-		this.name = name;
-		creatureNumber = number;
-		number++;
-		strength = (int)(Math.random() * 6);
-	}
-	/**
-	 * Creates a creature where the name of the creature is creatureNumber
+	 * Creates a creature
 	 */
 	public Creature() {
 		alive = true;
-		age = 0;
+		age = 1;
 		creatureNumber = number;
 		number++;
-		name = String.valueOf(creatureNumber);
 		strength = (int)(Math.random() * 6);
 	}
-	
+
 	//=========================================================================
-	
+
 	/**
 	 * Ages the creature by one
 	 */
 	public void age() {
-		
-		age++;
+		if(isAlive()) {
+			if(Math.random() > 0.75) {
+				strength++;
+			}
+			age++;
+		}
 	}
-	
+
 	//=========================================================================
 
 	public boolean isAlive() {
 		return alive;
 	}
-	
+
 	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
@@ -72,7 +60,7 @@ public class Creature {
 	public int getAge() {
 		return age;
 	}
-	
+
 	public void setAge(int age) {
 		this.age = age;
 	}
@@ -80,7 +68,7 @@ public class Creature {
 	public static int getNumber() {
 		return number;
 	}
-	
+
 	public static void setNumber(int number) {
 		Creature.number = number;
 	}
@@ -93,20 +81,12 @@ public class Creature {
 		this.creatureNumber = creatureNumber;
 	}
 	//----------------------------------------//
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	//----------------------------------------//
 	public int getStrength() {
 		return strength;
 	}
-	
+
 	public void setStrength(int strength) {
 		this.strength = strength;
 	}
-	
+
 }
