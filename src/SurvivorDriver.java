@@ -20,7 +20,7 @@ public class SurvivorDriver {
 
 		//=====================================================================
 
-		population.add(steve);
+		population.add(0, steve);
 		System.out.println(steve.getName() + " is born!!!");
 
 		//Main loop driving the experience
@@ -40,6 +40,8 @@ public class SurvivorDriver {
 				}
 				population.get(i).age();
 			}
+			
+			System.out.println();
 		}
 
 		System.out.println(steve.getName() + " lasted " + steve.getAge() + " days");
@@ -53,7 +55,7 @@ public class SurvivorDriver {
 			System.out.println(steve.getName() + " has encountered a hostile creature!!!!!");
 			
 			//The creature the subject is to fight randomly determined
-			int combatant = (int) Math.random() * (Creature.getNumber());
+			int combatant = 1 + (int) Math.random() * ((Creature.getNumber() - 1) +1);
 			
 			//The creature defeats the subject
 			if(population.get(combatant).getStrength() > steve.getStrength()) {
@@ -64,10 +66,22 @@ public class SurvivorDriver {
 			//The subject defeats the creature
 			else {
 				population.get(combatant).setAlive(false);
+				steve.hunger(-4);
 				System.out.println(steve.getName() + " has defeated creature number " + population.get(combatant).getCreatureNumber());
-				dead.add(population.remove(combatant));
 			}
 		}
+		
+		else if(chance < 0.9 && chance >= 0.8) {
+			System.out.println(steve.getName() + " has found some food!\n+3 to Hunger");
+			steve.hunger(3);
+		}
+		else {
+			System.out.println("Huh, it must have been nothing");
+		}
+	}
+	//TODO Add in a random number of creatures to be auto generated
+	public static void generateCreatures() {
+		
 	}
 
 

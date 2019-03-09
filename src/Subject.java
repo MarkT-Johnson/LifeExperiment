@@ -71,7 +71,7 @@ public class Subject extends Creature{
 	 * @param value The amount to change the hunger by
 	 */
 	public void hunger(int value) {
-		hunger = hunger + value;
+		hunger += value;
 		if(hunger <= 0) {
 			this.setAlive(false);
 			System.out.println(name + " has starved to death!!!!");
